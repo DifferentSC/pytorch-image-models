@@ -627,6 +627,11 @@ class RandAugment:
             img = op(img)
         return img
 
+    def __str__(self):
+        return "randaug-n{}".format(self.num_layers)
+
+    __repr__ = __str__
+
 
 def rand_augment_transform(config_str, hparams):
     """
