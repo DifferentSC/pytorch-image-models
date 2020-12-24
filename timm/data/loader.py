@@ -8,6 +8,7 @@ Hacked together by / Copyright 2020 Ross Wightman
 
 import torch.utils.data
 import numpy as np
+import multiprocessing
 
 from .transforms_factory import create_transform
 from .constants import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD
@@ -208,6 +209,7 @@ def create_loader(
         collate_fn=collate_fn,
         pin_memory=pin_memory,
         drop_last=is_training,
+        multiprocessing_context=multiprocessing.get_context('spawn')
     )
     if use_prefetcher:
         prefetch_re_prob = re_prob if is_training and not no_aug else 0.
