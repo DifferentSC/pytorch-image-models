@@ -208,8 +208,7 @@ def create_loader(
         sampler=sampler,
         collate_fn=collate_fn,
         pin_memory=pin_memory,
-        drop_last=is_training,
-        multiprocessing_context=multiprocessing.get_context('spawn')
+        drop_last=is_training
     )
     if use_prefetcher:
         prefetch_re_prob = re_prob if is_training and not no_aug else 0.
